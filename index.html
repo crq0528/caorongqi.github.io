@@ -5,304 +5,326 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>曹荣啟 - Java后端开发工程师</title>
     <style>
+        /* 全局样式 - 贴合极简现代风 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", Arial, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        :root {
+            --primary: #2563eb;
+            --secondary: #f3f4f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         body {
-            background-color: #f5f7fa;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
+            background-color: #f9fafb;
+            color: var(--text);
+            line-height: 1.7;
         }
+        /* 主容器 - 双栏布局 */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: #fff;
-            padding: 40px;
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 30px;
+        }
+        /* 侧边栏 */
+        .sidebar {
+            width: 300px;
+            background: white;
+            padding: 30px 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
         }
-        .header {
+        .sidebar .avatar {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #2c3e50;
-        }
-        .header h1 {
-            font-size: 28px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .header .info {
-            font-size: 16px;
-            color: #666;
-        }
-        .header .info a {
-            color: #2980b9;
-            text-decoration: none;
-        }
-        .header .info a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            font-size: 20px;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 4px solid #2980b9;
-        }
-        .section .content {
-            padding-left: 10px;
-        }
-        .item {
             margin-bottom: 20px;
         }
-        .item .title {
-            font-weight: bold;
-            font-size: 17px;
-            color: #34495e;
+        .sidebar .avatar h1 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .sidebar .avatar p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        .sidebar .contact {
+            margin: 25px 0;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        .sidebar .contact p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar .contact a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .sidebar .contact a:hover {
+            text-decoration: underline;
+        }
+        .sidebar .skills-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .sidebar .skills-tag span {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+        }
+        /* 内容区 */
+        .content {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        .card {
+            margin-bottom: 25px;
+        }
+        .card-header {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            margin-bottom: 8px;
+            align-items: center;
         }
-        .item .title .time {
-            font-weight: normal;
+        .card-header h3 {
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .card-header .time {
             font-size: 14px;
-            color: #999;
+            color: var(--text-light);
         }
-        .item .sub-title {
-            color: #666;
-            font-size: 15px;
-            margin: 5px 0;
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
         }
-        .item ul {
+        .card-content ul {
             list-style: none;
-            margin: 10px 0;
-            padding-left: 20px;
+            padding-left: 15px;
         }
-        .item ul li {
+        .card-content li {
             margin-bottom: 8px;
             position: relative;
+            font-size: 15px;
         }
-        .item ul li::before {
-            content: "•";
-            color: #2980b9;
+        .card-content li::before {
+            content: "▹";
+            color: var(--primary);
             position: absolute;
             left: -15px;
         }
-        .item .achievement {
-            color: #e74c3c;
+        .highlight {
+            color: #dc2626;
             font-weight: 500;
-        }
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .skill-tag {
-            background-color: #e8f4f8;
-            color: #2980b9;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 14px;
         }
         /* 响应式适配 */
         @media (max-width: 768px) {
             .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .content {
                 padding: 20px;
-            }
-            .header h1 {
-                font-size: 24px;
-            }
-            .section h2 {
-                font-size: 18px;
-            }
-            .item .title {
-                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 头部信息 -->
-        <div class="header">
-            <h1>曹荣啟 - Java后端开发工程师</h1>
-            <div class="info">
-                13461861235 | <a href="mailto:rongqicao@emails.bjut.edu.cn">rongqicao@emails.bjut.edu.cn</a> |
-                <a href="https://github.com/crq0528" target="_blank">GitHub: crq0528</a> | 研究方向：多模态+目标检测+信号处理
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="avatar">
+                <h1>曹荣啟</h1>
+                <p>Java后端开发工程师</p>
+                <p>多模态+目标检测+信号处理</p>
             </div>
-        </div>
+            <div class="contact">
+                <p>📞 13461861235</p>
+                <p>📧 <a href="mailto:rongqicao@emails.bjut.edu.cn">rongqicao@emails.bjut.edu.cn</a></p>
+                <p>💻 <a href="https://github.com/crq0528" target="_blank">GitHub: crq0528</a></p>
 
-        <!-- 教育经历 -->
-        <div class="section">
-            <h2>教育经历</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">北京工业大学（211）<span class="time">2024.09 - 2027.06</span></div>
-                    <div class="sub-title">软件工程 硕士 | 专业排名TOP 5%</div>
-                </div>
-                <div class="item">
-                    <div class="title">湖南中医药大学<span class="time">2020.09 - 2024.06</span></div>
-                    <div class="sub-title">计算机科学与技术 本科 | 专业排名第一，保研至北京工业大学</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 学生工作 & 荣誉奖项 -->
-        <div class="section">
-            <h2>学生工作与荣誉奖项</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">学生工作</div>
-                    <ul>
-                        <li>学生党支部书记、学习委员</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="title">证书</div>
-                    <ul>
-                        <li>大学英语CET-6、软件设计师（中级资格证书）</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="title">学业奖学金</div>
-                    <ul>
-                        <li>国家奖学金、校长奖学金、国家励志奖学金</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="title">专业比赛</div>
-                    <ul>
-                        <li>创新创业大赛 国家二等奖</li>
-                        <li>蓝桥杯 省二等奖、天梯赛 省二等奖</li>
-                        <li>中国大学生数学竞赛 省三等奖</li>
-                    </ul>
+                <h4 style="margin: 15px 0 8px 0; font-size: 15px;">核心技能</h4>
+                <div class="skills-tag">
+                    <span>Java</span>
+                    <span>Spring Cloud</span>
+                    <span>SpringBoot</span>
+                    <span>MySQL</span>
+                    <span>Redis</span>
+                    <span>MQTT</span>
+                    <span>分布式锁</span>
+                    <span>Elasticsearch</span>
+                    <span>Git</span>
+                    <span>Linux</span>
                 </div>
             </div>
         </div>
 
-        <!-- 科研成果 -->
-        <div class="section">
-            <h2>科研成果</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">在投论文（1作为主）</div>
-                    <ul>
-                        <li>Position-Rotation Graph and Elevation Partitioning Strategy for Traffic Police Gesture Recognition（JVCI/2区）</li>
-                        <li>CLDAE:A Two Stage EEG-based Emotion Recognition Framework Combines Contrastive Learning and Dual-Attention Encoder（JBHI/1区）</li>
-                        <li>Entity-Aware Contrastive Fine-Tuning with Error-Aware Prompting for Low-Resource Depression NER（会议论文，2作）</li>
-                    </ul>
+        <!-- 内容区 -->
+        <div class="content">
+            <!-- 教育经历 -->
+            <div class="section">
+                <h2 class="section-title">教育经历</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>北京工业大学（211）</h3>
+                        <span class="time">2024.09 - 2027.06</span>
+                    </div>
+                    <div class="card-subtitle">软件工程 硕士 | 专业排名 TOP 5%</div>
                 </div>
-                <div class="item">
-                    <div class="title">在投专利</div>
-                    <ul>
-                        <li>融合对比学习的脑电情绪识别框架</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- 实习经历 -->
-        <div class="section">
-            <h2>实习经历</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">北京安擎科技有限公司<span class="time">2025.05 - 2025.08</span></div>
-                    <div class="sub-title">后端开发工程师</div>
-                    <ul>
-                        <li>参与SafeSky无人机交通管理软件核心开发，负责数据接入服务接口实现与全流程测试</li>
-                        <li>基于MQTT+SpringBoot+Redission技术栈，解决数据解析、设备状态管理等核心业务问题，落地多项性能优化方案</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="title">中国航天科工第四研究院<span class="time">2024.11 - 2025.02</span></div>
-                    <div class="sub-title">后端开发工程师</div>
-                    <ul>
-                        <li>参与军方某军训练管理业务信息系统研发，负责子系统接口设计、实现与测试</li>
-                        <li>基于Spring Cloud分布式技术栈开发，满足军方高安全、高可用、高合规的业务要求</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>湖南中医药大学</h3>
+                        <span class="time">2020.09 - 2024.06</span>
+                    </div>
+                    <div class="card-subtitle">计算机科学与技术 本科 | 专业排名第一，保研至北京工业大学</div>
                 </div>
             </div>
-        </div>
 
-        <!-- 核心项目经历 -->
-        <div class="section">
-            <h2>核心项目经历</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">SafeSky无人机交通管理软件 <span class="time">北京安擎科技</span></div>
-                    <div class="sub-title">核心技术：MQTT+SpringBoot+Redission+Spring Cloud Gateway+WebSocket | 职责：数据接入服务接口实现、性能优化、问题治理</div>
-                    <ul>
-                        <li>设计Protobuf自定义解析器，解决MQTT消息体量大、结构松散问题，<span class="achievement">数据解析效率提升40%，字段完整性验证通过率99.9%</span></li>
-                        <li>基于状态模式+Redisson分布式锁优化设备状态管理，<span class="achievement">判断准确率达99.6%，并发状态切换冲突率降至0.03%</span></li>
-                        <li>设计WebSocket超时判定机制，实现异常连接自动回收，<span class="achievement">服务器资源泄漏率从8.5%降至0.06%</span>，规避服务雪崩风险</li>
-                        <li>基于Namespace+Spring Cloud Gateway实现多租户隔离，<span class="achievement">跨租户越权访问拦截率100%</span>，1000QPS并发下吞吐量稳定无丢失</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="title">某军训练管理业务信息系统 <span class="time">中国航天科工第四研究院</span></div>
-                    <div class="sub-title">核心技术：Spring Cloud+达梦8+Redis+Elasticsearch+Hystrix+Ribbon | 职责：子系统接口设计、跨系统高可用优化、数据库&日志性能调优</div>
-                    <ul>
-                        <li>设计全局唯一ID+Redis原子操作+Hystrix熔断方案，<span class="achievement">跨系统服务调用成功率99.9%，故障恢复时间缩短60%</span></li>
-                        <li>实施分库分表+联合索引+Redis缓存优化，<span class="achievement">核心数据查询时间缩短50%，数据库CPU利用率降低30%</span></li>
-                        <li>基于ES冷热分层+分片索引优化审计日志，<span class="achievement">查询时间从20秒降至2秒内，整体查询效率提升93%</span>，满足实时审计需求</li>
-                    </ul>
+            <!-- 荣誉奖项 -->
+            <div class="section">
+                <h2 class="section-title">荣誉奖项</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>学业与竞赛</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>奖学金：国家奖学金、校长奖学金、国家励志奖学金</li>
+                            <li>竞赛：创新创业大赛 国家二等奖、蓝桥杯/天梯赛 省二等奖</li>
+                            <li>证书：大学英语CET-6、软件设计师（中级资格证书）</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 专业技能 -->
-        <div class="section">
-            <h2>专业技能</h2>
-            <div class="content">
-                <div class="item">
-                    <div class="title">Java核心</div>
-                    <ul>
-                        <li>精通基础语法、集合/反射/代理模式；深入理解JVM内存模型、双亲委派、G1垃圾回收；熟悉内存溢出/泄漏排查</li>
-                    </ul>
+            <!-- 科研成果 -->
+            <div class="section">
+                <h2 class="section-title">科研成果</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>在投论文（1作为主）</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Position-Rotation Graph and Elevation Partitioning Strategy for Traffic Police Gesture Recognition（JVCI/2区）</li>
+                            <li>CLDAE:A Two Stage EEG-based Emotion Recognition Framework Combines Contrastive Learning and Dual-Attention Encoder（JBHI/1区）</li>
+                            <li>Entity-Aware Contrastive Fine-Tuning with Error-Aware Prompting for Low-Resource Depression NER（会议论文，2作）</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item">
-                    <div class="title">数据库 & 缓存</div>
-                    <ul>
-                        <li>MySQL：精通性能调优、MVCC、事务/索引/日志；熟悉分库分表落地</li>
-                        <li>Redis：精通核心数据结构、持久化/分布式锁/哨兵机制；熟悉缓存雪崩/击穿/限流解决方案</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>在投专利</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>融合对比学习的脑电情绪识别框架</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item">
-                    <div class="title">分布式 & 微服务</div>
-                    <ul>
-                        <li>精通分布式事务、分布式锁；熟练使用Spring Cloud生态（Ribbon/OpenFeign/Dubbo）</li>
-                        <li>了解RabbitMQ/Kafka消息队列，熟悉死信交换机、消息堆积/丢失解决方案</li>
-                    </ul>
+            </div>
+
+            <!-- 实习经历 -->
+            <div class="section">
+                <h2 class="section-title">实习经历</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>北京安擎科技有限公司</h3>
+                        <span class="time">2025.05 - 2025.08</span>
+                    </div>
+                    <div class="card-subtitle">后端开发工程师</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>参与SafeSky无人机交通管理软件核心开发，负责数据接入服务接口实现与全流程测试</li>
+                            <li>基于MQTT+SpringBoot+Redission技术栈，解决数据解析、设备状态管理等核心业务问题</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item">
-                    <div class="title">开发框架 & 工具</div>
-                    <ul>
-                        <li>框架：精通Spring/SpringBoot/SpringMVC/Mybatis/Mybatis-Plus；深入理解IOC/AOP/Bean生命周期</li>
-                        <li>工具：熟练使用IntelliJ IDEA、Postman、Maven、Git；熟悉Linux常用命令</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>中国航天科工第四研究院</h3>
+                        <span class="time">2024.11 - 2025.02</span>
+                    </div>
+                    <div class="card-subtitle">后端开发工程师</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>参与军方某军训练管理业务信息系统研发，负责子系统接口设计、实现与测试</li>
+                            <li>基于Spring Cloud分布式技术栈，满足军方高安全、高可用、高合规的业务要求</li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- 技能标签可视化 -->
-                <div class="skill-list">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Spring Cloud</span>
-                    <span class="skill-tag">SpringBoot</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">Redis</span>
-                    <span class="skill-tag">MQTT</span>
-                    <span class="skill-tag">Elasticsearch</span>
-                    <span class="skill-tag">分布式锁</span>
-                    <span class="skill-tag">Protobuf</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Linux</span>
+            </div>
+
+            <!-- 项目经历 -->
+            <div class="section">
+                <h2 class="section-title">核心项目经历</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>SafeSky无人机交通管理软件</h3>
+                        <span class="time">北京安擎科技</span>
+                    </div>
+                    <div class="card-subtitle">核心技术：MQTT+SpringBoot+Redission+Spring Cloud Gateway+WebSocket</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>设计Protobuf自定义解析器，<span class="highlight">数据解析效率提升40%，字段完整性验证通过率99.9%</span></li>
+                            <li>基于状态模式+Redisson分布式锁优化设备状态管理，<span class="highlight">判断准确率达99.6%，并发冲突率降至0.03%</span></li>
+                            <li>设计WebSocket超时判定机制，<span class="highlight">服务器资源泄漏率从8.5%降至0.06%</span>，规避服务雪崩风险</li>
+                            <li>基于Namespace+Spring Cloud Gateway实现多租户隔离，<span class="highlight">跨租户越权拦截率100%</span>，1000QPS并发下吞吐量稳定</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>某军训练管理业务信息系统</h3>
+                        <span class="time">中国航天科工第四研究院</span>
+                    </div>
+                    <div class="card-subtitle">核心技术：Spring Cloud+达梦8+Redis+Elasticsearch+Hystrix+Ribbon</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>设计全局唯一ID+Redis原子操作+Hystrix熔断，<span class="highlight">跨系统服务调用成功率99.9%，故障恢复时间缩短60%</span></li>
+                            <li>实施分库分表+联合索引+Redis缓存，<span class="highlight">核心查询时间缩短50%，数据库CPU利用率降低30%</span></li>
+                            <li>基于ES冷热分层+分片索引优化审计日志，<span class="highlight">查询时间从20秒降至2秒内，整体查询效率提升93%</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

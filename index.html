@@ -158,7 +158,15 @@
         }
         .highlight {
             color: #dc2626;
-            font-weight: 500;
+            font-weight: bold;
+        }
+        /* 论文超链接样式 */
+        .paper-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .paper-link:hover {
+            text-decoration: underline;
         }
         /* 响应式适配 */
         @media (max-width: 768px) {
@@ -181,7 +189,7 @@
         <!-- 侧边栏 -->
         <div class="sidebar">
             <div class="avatar">
-                <!-- 已替换为你仓库中的实际图片路径 -->
+                <!-- 仓库实际图片路径 -->
                 <img src="static/assets/img/crq.jpg" alt="曹荣啟">
                 <h1>曹荣啟</h1>
                 <p>Java后端开发工程师</p>
@@ -218,29 +226,57 @@
                         <h3>北京工业大学（211）</h3>
                         <span class="time">2024.09 - 2027.06</span>
                     </div>
-                    <div class="card-subtitle">软件工程 硕士 | 专业排名 TOP 5%</div>
+                    <div class="card-subtitle">软件工程 硕士 | 专业排名<strong>TOP 5%</strong></div>
                 </div>
                 <div class="card">
                     <div class="card-header">
                         <h3>湖南中医药大学</h3>
                         <span class="time">2020.09 - 2024.06</span>
                     </div>
-                    <div class="card-subtitle">计算机科学与技术 本科 | 专业排名第一，保研至北京工业大学</div>
+                    <div class="card-subtitle">计算机科学与技术 本科 | 专业排名<strong>第一</strong> <strong>保研</strong></div>
                 </div>
             </div>
 
-            <!-- 荣誉奖项 -->
+            <!-- 学生工作及荣誉奖项 -->
             <div class="section">
-                <h2 class="section-title">荣誉奖项</h2>
+                <h2 class="section-title">学生工作及荣誉奖项</h2>
                 <div class="card">
                     <div class="card-header">
-                        <h3>学业与竞赛</h3>
+                        <h3>学生工作</h3>
                     </div>
                     <div class="card-content">
                         <ul>
-                            <li>奖学金：国家奖学金、校长奖学金、国家励志奖学金</li>
-                            <li>竞赛：创新创业大赛 国家二等奖、蓝桥杯/天梯赛 省二等奖</li>
-                            <li>证书：大学英语CET-6、软件设计师（中级资格证书）</li>
+                            <li>学生党支部书记、学习委员</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>证书</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>英语CET-6、<strong>软件设计师中级资格证书</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>学业奖学金</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>国家奖学金</strong>、校长奖学金、国家励志奖学金</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>专业比赛</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>创新创业大赛国家二等奖</strong>、蓝桥杯省二等奖、天梯赛省二等奖、中国大学生数学竞赛省三等奖</li>
                         </ul>
                     </div>
                 </div>
@@ -251,12 +287,12 @@
                 <h2 class="section-title">科研成果</h2>
                 <div class="card">
                     <div class="card-header">
-                        <h3>已发表论文（1作为主）</h3>
+                        <h3>已发表论文（1作）</h3>
                     </div>
                     <div class="card-content">
                         <ul>
-                            <li>Position-Rotation Graph and Elevation Partitioning Strategy for Traffic Police Gesture Recognition（JVCI/2区）</li>
-                            <li>CLDAE:A Two Stage EEG-based Emotion Recognition Framework Combines Contrastive Learning and Dual-Attention Encoder（JBHI/1区）</li>
+                            <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S1047320325003128" target="_blank" class="paper-link">Position-Rotation Graph and Elevation Partitioning Strategy for Traffic Police Gesture Recognition</a>（<strong>JVCI/2区</strong>）</li>
+                            <li><a href="https://ieeexplore.ieee.org/document/11417405" target="_blank" class="paper-link">CLDAE:A Two Stage EEG-based Emotion Recognition Framework Combines Contrastive Learning and Dual-Attention Encoder</a>（<strong>JBHI/1区</strong>）</li>
                             <li>Entity-Aware Contrastive Fine-Tuning with Error-Aware Prompting for Low-Resource Depression NER（会议论文，2作）</li>
                         </ul>
                     </div>
@@ -267,7 +303,17 @@
                     </div>
                     <div class="card-content">
                         <ul>
-                            <li>融合对比学习的脑电情绪识别框架</li>
+                            <li><strong>融合对比学习的脑电情绪识别框架</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>研究方向</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>多模态+目标检测+信号处理</li>
                         </ul>
                     </div>
                 </div>
@@ -282,12 +328,6 @@
                         <span class="time">2025.05 - 2025.08</span>
                     </div>
                     <div class="card-subtitle">后端开发工程师</div>
-                    <div class="card-content">
-                        <ul>
-                            <li>参与SafeSky无人机交通管理软件核心开发，负责数据接入服务接口实现与全流程测试</li>
-                            <li>基于MQTT+SpringBoot+Redission技术栈，解决数据解析、设备状态管理等核心业务问题</li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
@@ -295,16 +335,10 @@
                         <span class="time">2024.11 - 2025.02</span>
                     </div>
                     <div class="card-subtitle">后端开发工程师</div>
-                    <div class="card-content">
-                        <ul>
-                            <li>参与军方某军训练管理业务信息系统研发，负责子系统接口设计、实现与测试</li>
-                            <li>基于Spring Cloud分布式技术栈，满足军方高安全、高可用、高合规的业务要求</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 
-            <!-- 项目经历 -->
+            <!-- 核心项目经历 -->
             <div class="section">
                 <h2 class="section-title">核心项目经历</h2>
                 <div class="card">
@@ -312,13 +346,13 @@
                         <h3>SafeSky无人机交通管理软件</h3>
                         <span class="time">北京安擎科技</span>
                     </div>
-                    <div class="card-subtitle">核心技术：MQTT+SpringBoot+Redission+Spring Cloud Gateway+WebSocket</div>
+                    <div class="card-subtitle">核心技术：MQTT+SpringBoot+Redission | 项目职责：负责数据接入服务接口的实现与测试</div>
                     <div class="card-content">
                         <ul>
-                            <li>设计Protobuf自定义解析器，<span class="highlight">数据解析效率提升40%，字段完整性验证通过率99.9%</span></li>
-                            <li>基于状态模式+Redisson分布式锁优化设备状态管理，<span class="highlight">判断准确率达99.6%，并发冲突率降至0.03%</span></li>
+                            <li>设计Protobuf自定义解析器优化MQTT数据解析，<span class="highlight">数据解析效率提升40%，字段完整性验证通过率99.9%</span></li>
+                            <li>基于状态模式+Redisson分布式锁优化设备状态管理，<span class="highlight">判断准确率99.6%，并发冲突率降至0.03%</span></li>
                             <li>设计WebSocket超时判定机制，<span class="highlight">服务器资源泄漏率从8.5%降至0.06%</span>，规避服务雪崩风险</li>
-                            <li>基于Namespace+Spring Cloud Gateway实现多租户隔离，<span class="highlight">跨租户越权拦截率100%</span>，1000QPS并发下吞吐量稳定</li>
+                            <li>基于Namespace+Spring Cloud Gateway实现多租户隔离，<span class="highlight">跨租户越权拦截率100%，1000QPS并发吞吐量稳定</span></li>
                         </ul>
                     </div>
                 </div>
@@ -327,12 +361,30 @@
                         <h3>某军训练管理业务信息系统</h3>
                         <span class="time">中国航天科工第四研究院</span>
                     </div>
-                    <div class="card-subtitle">核心技术：Spring Cloud+达梦8+Redis+Elasticsearch+Hystrix+Ribbon</div>
+                    <div class="card-subtitle">核心技术：Spring Cloud+达梦8+Redis+Elasticsearch | 项目职责：负责子系统功能接口设计、实现与测试</div>
                     <div class="card-content">
                         <ul>
-                            <li>设计全局唯一ID+Redis原子操作+Hystrix熔断，<span class="highlight">跨系统服务调用成功率99.9%，故障恢复时间缩短60%</span></li>
-                            <li>实施分库分表+联合索引+Redis缓存，<span class="highlight">核心查询时间缩短50%，数据库CPU利用率降低30%</span></li>
+                            <li>设计全局唯一ID+Redis原子操作+Hystrix熔断方案，<span class="highlight">跨系统服务调用成功率99.9%，故障恢复时间缩短60%</span></li>
+                            <li>实施分库分表+联合索引+Redis缓存优化，<span class="highlight">核心查询时间缩短50%，数据库CPU利用率降低30%</span></li>
                             <li>基于ES冷热分层+分片索引优化审计日志，<span class="highlight">查询时间从20秒降至2秒内，整体查询效率提升93%</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 专业技能 -->
+            <div class="section">
+                <h2 class="section-title">专业技能</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>Java</strong>：熟练掌握基础语法、集合/反射/代理模式；熟练JVM内存模型、双亲委派模型、G1垃圾回收，了解内存溢出/泄漏问题</li>
+                            <li><strong>数据库</strong>：熟练掌握MySQL，熟悉性能调优、MVCC、日志、事务、索引，了解分库分表场景使用</li>
+                            <li><strong>Redis</strong>：熟练掌握核心数据结构，熟悉持久化、内存淘汰、分布式锁、哨兵机制，了解缓存雪崩/击穿/令牌限流场景</li>
+                            <li><strong>消息队列</strong>：了解RabbitMQ、Kafka常用消息模型，了解死信交换机、消息堆积/丢失问题</li>
+                            <li><strong>微服务与分布式</strong>：熟练掌握分布式事务、分布式锁，熟练使用SpringCloud框架及Ribbon/OpenFeign/Dubbo组件</li>
+                            <li><strong>开发框架</strong>：熟悉Spring、SpringMVC、Mybatis、Mybatis-Plus、SpringBoot，理解IOC、AOP、Bean生命周期</li>
+                            <li><strong>工具</strong>：熟悉IntelliJ IDEA、Postman、Maven、Git，了解Linux命令</li>
                         </ul>
                     </div>
                 </div>

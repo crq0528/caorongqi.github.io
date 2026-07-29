@@ -906,9 +906,9 @@
             })();
         }
 
-        /* easter egg 1 — Konami code */
+        /* easter egg 1 — press ↑ ↑ */
         (function () {
-            const seq = ['arrowup','arrowup','arrowdown','arrowdown','arrowleft','arrowright','arrowleft','arrowright','b','a'];
+            const seq = ['arrowup','arrowup'];
             let i = 0;
             document.addEventListener('keydown', (e) => {
                 const k = e.key.toLowerCase();
@@ -938,7 +938,7 @@
 
         /* easter egg 3 — greeting for developers who open the console */
         console.log('%c曹荣啟 · 个人主页', 'color:#a8792c;font:700 22px Georgia,serif');
-        console.log('%c你好，开发者 👋  彩蛋提示： ↑ ↑ ↓ ↓ ← → ← → B A', 'color:#1f3a5f;font-size:13px');
+        console.log('%c你好，开发者 👋  彩蛋提示：连按两次 ↑ ↑', 'color:#1f3a5f;font-size:13px');
         console.log('%cGitHub → https://github.com/crq0528', 'color:#8c96a3;font-size:12px');
     </script>
 </body>

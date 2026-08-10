@@ -355,6 +355,44 @@
             font-size: 14px; letter-spacing: .02em;
         }
 
+        /* ============ LOGOS + ROW HEADERS ============ */
+        .rowhead { display: flex; gap: 15px; align-items: flex-start; }
+        .rowhead .rh-body { flex: 1; min-width: 0; }
+        .logo {
+            width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
+            display: grid; place-items: center;
+            color: #fff; font-weight: 700; font-size: 19px; line-height: 1;
+            box-shadow: 0 3px 12px rgba(20,41,68,.16);
+            overflow: hidden; user-select: none;
+        }
+        .logo svg { width: 54%; height: 54%; fill: #fff; }
+        .logo.tiktok    { background: #0c0c11; }
+        .logo.lark      { background: linear-gradient(135deg, #3a7bff, #17c3e6); }
+        .logo.anqing    { background: linear-gradient(135deg, #2f6bed, #1e3a8a); }
+        .logo.casic     { background: linear-gradient(135deg, #c62a30, #8e1c20); }
+
+        /* self-evaluation / profile */
+        .profile-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+        .profile-list li {
+            position: relative; padding-left: 27px;
+            font-size: 14.5px; color: var(--ink-soft); line-height: 1.92;
+        }
+        .profile-list li::before {
+            content: "◆"; position: absolute; left: 0; top: .12em;
+            color: var(--gold-soft); font-size: 12px;
+        }
+        .profile-list li b, .profile-list li strong { color: var(--ink); font-weight: 600; }
+
+        /* project tech line + description */
+        .proj-desc { font-size: 14px; color: var(--ink-soft); margin-top: 12px; line-height: 1.85; }
+        .proj-tech {
+            font-size: 12.5px; color: var(--navy);
+            background: #f1f4f8; border: 1px solid #e2e8f1;
+            border-radius: 8px; padding: 7px 13px; margin: 12px 0 2px;
+            letter-spacing: .01em; line-height: 1.6;
+        }
+        .proj-tech b { color: var(--gold); font-weight: 600; }
+
         /* ============ AWARDS GALLERY ============ */
         .gallery {
             display: grid;
@@ -511,9 +549,9 @@
                 <h1 class="hero-name">曹荣啟</h1>
                 <p class="hero-role"><b>Java 后端开发工程师</b> ｜ 北京工业大学 · 软件工程硕士</p>
                 <div class="hero-tags">
-                    <span>多模态信号处理</span>
-                    <span>目标检测</span>
+                    <span>Agent 架构设计</span>
                     <span>分布式后端</span>
+                    <span>多模态科研</span>
                     <span>中共党员</span>
                 </div>
             </div>
@@ -537,17 +575,17 @@
                     <div class="stat"><b>TOP 5%</b><small>硕士成绩排名</small></div>
                     <div class="stat"><b>No.1</b><small>本科专业排名</small></div>
                     <div class="stat"><b>2</b><small>一作 SCI 论文</small></div>
-                    <div class="stat"><b>国奖</b><small>国家奖学金</small></div>
+                    <div class="stat"><b>4</b><small>名企实习经历</small></div>
                 </div>
             </div>
 
             <div class="panel reveal">
                 <div class="panel-title">Core Skills</div>
                 <div class="skills">
-                    <span>Java</span><span>Spring Cloud</span><span>SpringBoot</span>
-                    <span>MySQL</span><span>Redis</span><span>MQTT</span>
-                    <span>分布式锁</span><span>Elasticsearch</span><span>RabbitMQ</span>
-                    <span>Git</span><span>Linux</span>
+                    <span>Java</span><span>Spring Boot</span><span>Spring Cloud</span>
+                    <span>MySQL</span><span>Redis</span><span>Kafka</span>
+                    <span>分布式</span><span>Elasticsearch</span><span>Agent</span>
+                    <span>Tool Calling</span><span>Git</span><span>Linux</span>
                 </div>
             </div>
 
@@ -574,6 +612,19 @@
 
         <!-- ========== CONTENT ========== -->
         <main class="content">
+            <!-- 自我评价 -->
+            <section class="section reveal">
+                <div class="section-head">
+                    <span class="eyebrow">Profile</span>
+                    <h2 class="section-title">自我评价</h2>
+                </div>
+                <ul class="profile-list">
+                    <li>具备<strong>扎实的计算机专业基础</strong>和较强的学习能力，能够平衡硕士阶段科研任务与实习工作，在不同场景下保持稳定执行和高质量交付。</li>
+                    <li>做事认真踏实，<strong>责任心强</strong>，具备良好的沟通协作能力，能够积极配合团队推进任务落实，并在实践中不断总结提升。</li>
+                    <li>在<strong>后端开发、数据处理和业务系统建设</strong>方面积累了一定实践经验，具备较强的问题分析与解决能力，具有持续学习和长期发展的潜力。</li>
+                </ul>
+            </section>
+
             <!-- 教育经历 -->
             <section class="section reveal">
                 <div class="section-head">
@@ -675,18 +726,52 @@
                     <h2 class="section-title">实习经历</h2>
                 </div>
                 <div class="item">
-                    <div class="item-head">
-                        <h3>北京安擎科技有限公司</h3>
-                        <span class="item-time">2025.05 – 2025.08</span>
+                    <div class="rowhead">
+                        <div class="logo tiktok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>字节跳动 · TikTok Live</h3>
+                                <span class="item-time">2026.06 – 至今</span>
+                            </div>
+                            <div class="item-sub">Agent 开发实习生 ｜ 智能助手架构 · 意图路由 · 工具调用</div>
+                        </div>
                     </div>
-                    <div class="item-sub">后端开发工程师</div>
                 </div>
                 <div class="item">
-                    <div class="item-head">
-                        <h3>中国航天科工第四研究院</h3>
-                        <span class="item-time">2024.11 – 2025.02</span>
+                    <div class="rowhead">
+                        <div class="logo lark">飞</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>字节跳动 · 飞书 Lark Office</h3>
+                                <span class="item-time">2025.11 – 2026.05</span>
+                            </div>
+                            <div class="item-sub">后端开发实习生 ｜ 数据合规 · 增量同步</div>
+                        </div>
                     </div>
-                    <div class="item-sub">后端开发工程师</div>
+                </div>
+                <div class="item">
+                    <div class="rowhead">
+                        <div class="logo anqing">安</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>北京安擎科技有限公司</h3>
+                                <span class="item-time">2025.06 – 2025.09</span>
+                            </div>
+                            <div class="item-sub">后端开发实习生 ｜ 业务接口开发 · 数据库设计</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="rowhead">
+                        <div class="logo casic">航</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>中国航天科工第四研究院</h3>
+                                <span class="item-time">2024.11 – 2025.02</span>
+                            </div>
+                            <div class="item-sub">后端开发实习生 ｜ 系统开发 · 业务维护</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -696,12 +781,60 @@
                     <span class="eyebrow">Selected Projects</span>
                     <h2 class="section-title">核心项目经历</h2>
                 </div>
+
                 <div class="item">
-                    <div class="item-head">
-                        <h3>SafeSky 无人机交通管理软件</h3>
-                        <span class="item-time">北京安擎科技</span>
+                    <div class="rowhead">
+                        <div class="logo tiktok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>TikTok Live · 智能助手 Agent</h3>
+                                <span class="item-time">2026.06 – 至今</span>
+                            </div>
+                            <div class="item-sub">字节跳动 · TikTok-Live ｜ Agent 开发实习生</div>
+                        </div>
                     </div>
-                    <div class="item-sub">核心技术：MQTT + SpringBoot + Redisson ｜ 负责数据接入服务接口的实现与测试</div>
+                    <div class="proj-desc">针对 TikTok Live 基础业务研发测试链路长、Oncall 排障依赖人工经验、SOP 分散难复用等问题，设计并落地智能助手 Agent，显著提升 Oncall 响应效率与闭环能力。</div>
+                    <div class="proj-tech"><b>核心技术</b>：ByteAgent + Priority Routing 决策引擎 + Host-side Tool Calling</div>
+                    <ul class="list">
+                        <li>设计「输入解析 → Priority Routing 决策 → Skill Orchestration → Host-side Tool Calling → 答案构建与来源标注」<strong>五层 Agent 架构</strong>，将业务统一收敛至自然语言入口，<span class="hl">支持 30+ 业务场景横向扩展，新增场景接入成本显著降低</span></li>
+                        <li>接入 <span class="hl">20+ Host-side Tools</span>，通过强制 load-skill 机制在工具调用前完成业务 SOP 校验，保障高风险操作执行合规、避免误操作，实现对后端 RPC 能力的合规调用</li>
+                        <li>构建基于意图优先的 <strong>Priority Routing 决策引擎</strong>，支持总结 / 诊断 / 操作及缺参追问的自动分流，实现自然语言到 skill / RAG / Tool 检索链路的稳定映射</li>
+                        <li>引入 Memory Facts 与 Event Summaries 结构化沉淀跨轮次关键事实，支撑 Oncall 群聊总结归档、能力评估闭环与 Meego 长期任务跟踪</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="rowhead">
+                        <div class="logo lark">飞</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>飞书 · 群 Metadata 数据合规副本</h3>
+                                <span class="item-time">2025.11 – 2026.05</span>
+                            </div>
+                            <div class="item-sub">字节跳动 · 飞书 Lark ｜ 后端开发实习生</div>
+                        </div>
+                    </div>
+                    <div class="proj-desc">为满足数据合规要求，建立稳定的 Chat Metadata 合规副本跨环境复制与扩散机制：当群成员地理属地（PDL）跨越 BDEE 与 USDS 时自动同步 Metadata 副本，确保合规数据导出时上下文完整一致。</div>
+                    <div class="proj-tech"><b>核心技术</b>：Kafka + RDS 入仓 + 状态机 + 兜底接口 + 定时任务</div>
+                    <ul class="list">
+                        <li>以基于 <strong>version 字段的乐观锁增量同步</strong> 替代全量同步，规避时间戳过滤的边界数据丢失与并发更新问题，<span class="hl">预计减少数据传输约 180 GB/天 ≈ 5.4 TB/月</span></li>
+                        <li>设计并落地<strong>字段来源映射表</strong>，以配置化方式固化数据标准、对外提供统一数据服务，解决多数据源字段来源不清、一致性与可追溯性差的问题</li>
+                        <li>设计<strong>双数据源策略</strong>：Chat meta 优先取自群合规副本、失败时在线接口兜底，成员信息仍走 IM 在线；基于 RDS 入仓 + 更新事件触发增量同步，<span class="hl">实时查询从秒级降至毫秒级，在线接口压力减少 80%，同步延迟从分钟级降至秒级</span></li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="rowhead">
+                        <div class="logo anqing">安</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>SafeSky 无人机交通管理软件</h3>
+                                <span class="item-time">2025.06 – 2025.09</span>
+                            </div>
+                            <div class="item-sub">北京安擎科技 ｜ 负责数据接入服务接口的实现与测试</div>
+                        </div>
+                    </div>
+                    <div class="proj-tech"><b>核心技术</b>：MQTT + Spring Boot + Redisson</div>
                     <ul class="list">
                         <li>设计 Protobuf 自定义解析器优化 MQTT 数据解析，<span class="hl">数据解析效率提升 40%，字段完整性验证通过率 99.9%</span></li>
                         <li>基于状态模式 + Redisson 分布式锁优化设备状态管理，<span class="hl">判断准确率 99.6%，并发冲突率降至 0.03%</span></li>
@@ -709,12 +842,19 @@
                         <li>基于 Namespace + Spring Cloud Gateway 实现多租户隔离，<span class="hl">跨租户越权拦截率 100%，1000 QPS 并发吞吐稳定</span></li>
                     </ul>
                 </div>
+
                 <div class="item">
-                    <div class="item-head">
-                        <h3>某军训练管理业务信息系统</h3>
-                        <span class="item-time">中国航天科工第四研究院</span>
+                    <div class="rowhead">
+                        <div class="logo casic">航</div>
+                        <div class="rh-body">
+                            <div class="item-head">
+                                <h3>某军训练管理业务信息系统</h3>
+                                <span class="item-time">2024.11 – 2025.02</span>
+                            </div>
+                            <div class="item-sub">中国航天科工第四研究院 ｜ 负责子系统功能接口设计、实现与测试</div>
+                        </div>
                     </div>
-                    <div class="item-sub">核心技术：Spring Cloud + 达梦 8 + Redis + Elasticsearch ｜ 负责子系统功能接口设计、实现与测试</div>
+                    <div class="proj-tech"><b>核心技术</b>：Spring Cloud + 达梦 8 + Redis + Elasticsearch</div>
                     <ul class="list">
                         <li>设计全局唯一 ID + Redis 原子操作 + Hystrix 熔断方案，<span class="hl">跨系统服务调用成功率 99.9%，故障恢复时间缩短 60%</span></li>
                         <li>实施分库分表 + 联合索引 + Redis 缓存优化，<span class="hl">核心查询时间缩短 50%，数据库 CPU 利用率降低 30%</span></li>
@@ -731,13 +871,12 @@
                 </div>
                 <div class="item">
                     <ul class="list skilllist">
-                        <li><span class="lead">Java</span><span>熟练掌握基础语法、集合 / 反射 / 代理模式；熟悉 JVM 内存模型、双亲委派、G1 垃圾回收，了解内存溢出 / 泄漏问题</span></li>
-                        <li><span class="lead">数据库</span><span>熟练掌握 MySQL，熟悉性能调优、MVCC、日志、事务、索引，了解分库分表场景</span></li>
-                        <li><span class="lead">Redis</span><span>熟练掌握核心数据结构，熟悉持久化、内存淘汰、分布式锁、哨兵机制，了解缓存雪崩 / 击穿 / 限流场景</span></li>
-                        <li><span class="lead">消息队列</span><span>了解 RabbitMQ、Kafka 常用消息模型，了解死信交换机、消息堆积 / 丢失问题</span></li>
-                        <li><span class="lead">微服务</span><span>熟练掌握分布式事务、分布式锁，熟练使用 Spring Cloud 及 Ribbon / OpenFeign / Dubbo 组件</span></li>
-                        <li><span class="lead">框架</span><span>熟悉 Spring、SpringMVC、MyBatis、MyBatis-Plus、SpringBoot，理解 IOC、AOP、Bean 生命周期</span></li>
-                        <li><span class="lead">工具</span><span>熟悉 IntelliJ IDEA、Postman、Maven、Git，了解 Linux 常用命令</span></li>
+                        <li><span class="lead">编程语言</span><span>熟练 <strong>Java</strong>，扎实的数据结构 / 集合框架 / 反射 / 代理 / 并发编程，理解 JVM 内存模型、类加载、垃圾回收</span></li>
+                        <li><span class="lead">后端开发</span><span>熟悉 Spring Boot、Spring MVC、MyBatis(-Plus)，具备接口开发 / 服务联调 / 数据库设计经验</span></li>
+                        <li><span class="lead">数据库与缓存</span><span>熟悉 MySQL 索引 / 事务 / MVCC，熟悉 Redis 数据结构 / 持久化 / 缓存设计 / 分布式锁</span></li>
+                        <li><span class="lead">消息与分布式</span><span>熟悉 Kafka 消息模型与异步链路，了解分布式事务 / 分布式锁</span></li>
+                        <li><span class="lead">工程能力</span><span>熟悉 Git、Maven、Linux、IDEA、Postman，具备日志排查与跨团队协作能力</span></li>
+                        <li><span class="lead">智能应用</span><span>具备 <strong>Agent 架构设计</strong>、Tool Calling、路由编排、结构化记忆与业务 SOP 融合落地经验</span></li>
                     </ul>
                 </div>
             </section>
